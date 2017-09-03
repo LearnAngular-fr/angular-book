@@ -1,0 +1,10 @@
+<h1>Liste des repositories</h1>
+<hr />
+<ul>
+  <li *ngFor="let repo of repos; let i = index"><span>{{repo.id}} {{repo.name}}</span><span> --> <a (click)="delRepo(repo, i)" href="#">Supprimer</a></span></li>
+</ul>
+<hr />
+<input placeholder="créer un nouveau repo" #repo />
+<button (click)="addRepo(repo.value); repo.value=''">Créer un nouveau repo</button>
+<hr>
+<p  *ngIf="message">{{message}}</p>
