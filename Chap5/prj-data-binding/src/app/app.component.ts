@@ -15,7 +15,7 @@ import {Component} from '@angular/core';
       </app-comp2>
     </div>
     <br/>
-    <div>Valeur récupérée : {{compteur}}</div> 
+    <div>Valeur récupérée : {{compteur}}</div>
     <br/>
     <app-ma-taille [(taille)]="maTaille"></app-ma-taille>
     <div [style.font-size.px]="maTaille">texte resizer</div>
@@ -24,11 +24,11 @@ import {Component} from '@angular/core';
     <input [(ngModel)]="person"/> </div>`
 })
 export class AppComponent {
-  person: string= 'John Doe';
-  age: number= 30;
+  person = 'John Doe';
+  age= 30;
   address: any= {street: 'rue du Paradis', city: '75010 Paris'};
-  alignement: string = 'right';
-  couleur: string = 'red';
+  alignement = 'right';
+  couleur = 'red';
   compteur: any = 'N/A';
   maTaille = 13;
   myValueChange (event) {

@@ -2,20 +2,19 @@ import {Injectable, Optional} from '@angular/core';
 
 
 export class MonAutreServiceConfig {
-  monAutreValeur : string;
+  monAutreValeur: string;
 }
 
 @Injectable()
 export class MonAutreService {
 
-  monAutreValeur : string ;
+  monAutreValeur: string ;
 
   constructor(@Optional() config: MonAutreServiceConfig) {
     if (config) {
       this.monAutreValeur = config.monAutreValeur;
-    }
-    else {
-      this.monAutreValeur = 'Initiale'
+    } else {
+      this.monAutreValeur = 'Initiale';
     }
   }
 

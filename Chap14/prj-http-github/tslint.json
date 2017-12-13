@@ -60,6 +60,7 @@
       true,
       "ignore-params"
     ],
+    "no-import-side-effect": true,
     "no-misused-new": true,
     "no-non-null-assertion": true,
     "no-shadowed-variable": true,

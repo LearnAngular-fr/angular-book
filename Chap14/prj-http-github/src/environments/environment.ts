@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  GITHUB_API_ROOT:'https://api.github.com',
-  GITHUB_API_TOKEN:'xxx'
+  GITHUB_API_ROOT: 'https://api.github.com',
+  GITHUB_API_TOKEN: 'xxx'
 };

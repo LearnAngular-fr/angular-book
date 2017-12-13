@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
-import {MonModule} from "./mon-module/mon-module.module";
+import {MonModule} from './mon-module/mon-module.module';
 
 @NgModule({
   declarations: [

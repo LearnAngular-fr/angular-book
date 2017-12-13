@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LoggerService} from "./logger.service";
+import {LoggerService} from './logger.service';
 
 @Component({
   selector: 'app-component1',
@@ -8,16 +8,16 @@ import {LoggerService} from "./logger.service";
 })
 export class Component1 implements OnInit {
 
-  constructor(private logger:LoggerService) { }
+  constructor(private logger: LoggerService) { }
 
 
   ngOnInit() {
     this.logger.debug('component1');
     //console.log('size : '+this.logger.logs.length);
-    setTimeout(()=>{
+    setTimeout(() => {
       console.log('timeOut !');
       this.logger.debug('timeout');
-    },2000);
+    }, 2000);
 
   }
 

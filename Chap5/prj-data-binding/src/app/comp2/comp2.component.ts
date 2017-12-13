@@ -6,7 +6,7 @@ import {Component, Output, EventEmitter} from '@angular/core';
     <button (click)="increment()"> + </button> `
 })
 export class Comp2Component {
-  counterValue: number = 0;
+  counterValue = 0;
   @Output() counterChange = new EventEmitter();
 
   increment() {

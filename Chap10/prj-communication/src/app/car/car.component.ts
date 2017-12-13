@@ -5,7 +5,7 @@ import {Component} from '@angular/core';
   template: `
     <h1><span> Clignolant gauche : {{blinkerLeft}} </span> // <span> Clignolant droit : {{blinkerRight}} </span></h1>
     <h1><span> Porte gauche : {{doorLeft}}  </span> // <span> Porte droite : {{doorRight}}</span></h1>
-     
+
      <ng-content select="constructor"></ng-content>
   `
 })

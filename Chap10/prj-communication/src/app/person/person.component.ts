@@ -16,10 +16,10 @@ export class PersonComponent {
 
   private _person: any;
 
-  color: boolean = false;
+  color = false;
 
   @Input()
-  private disable: boolean = false;
+  private disable = false;
 
   @Output()
   onChoose = new EventEmitter<boolean>();
