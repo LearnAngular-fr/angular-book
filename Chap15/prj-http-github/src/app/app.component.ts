@@ -1,11 +1,23 @@
 import {Component, OnInit} from '@angular/core';
 import {GithubService} from './github.service';
-import {Repo} from './Repo.model';
+import {Repo} from './repo.model';
+import 'rxjs/add/operator/mergeMap';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+      <h1>Liste des repositories</h1>
+      <hr />
+      <ul>
+          <li *ngFor="let repo of repos; let i = index">
+              <span>{{repo.id}} {{repo.name}}</span><span> --> <a (click)="delRepo(repo, i)" href="#">Supprimer</a></span>
+          </li>
+      </ul>
+      <hr />
+      <input placeholder="créer un nouveau repo" #repo />
+      <button (click)="addRepo(repo.value); repo.value=''">Créer un nouveau repo</button>
+      <hr>
+      <p  *ngIf="message">{{message}}</p>`
 })
 export class AppComponent implements OnInit {
 
@@ -16,17 +28,17 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getRepos('learnAngular');
+    this.getRepos('wKoza');
   }
 
   getRepos(username: string): void {
     this.message = null;
     this.githubService.getRepos(username).subscribe(
-      repos => {
-        this.repos = repos
-        console.log(repos);
-      },
-      error => this.message = error
+        repos => {
+          this.repos = repos;
+          console.log(repos);
+        },
+        error => this.message = error
     );
   }
 
@@ -34,17 +46,17 @@ export class AppComponent implements OnInit {
 
     this.message = null;
 
-    this.githubService.addRepo(reponame).map(repo => repo)
-      .flatMap(repo => {
-        this.message = repo.name + ' a été créé';
-        return this.githubService.getRepos('learnAngular')
-      })
-      .subscribe(
-        repos => {
-          this.repos = repos
-        },
-        error => this.message = error
-      )
+    this.githubService.addRepo(reponame)
+        .flatMap(repo => {
+          this.message = repo.name + ' a été créé';
+          return this.githubService.getRepos('wKoza');
+        })
+        .subscribe(
+            repos => {
+              this.repos = repos;
+            },
+            error => this.message = error
+        );
   }
 
   delRepo(repo: Repo, index: number): void {
@@ -52,13 +64,13 @@ export class AppComponent implements OnInit {
     this.message = null;
 
     this.githubService.delRepo('wKoza', repo.name)
-      .subscribe(
-        () => {
-          this.message = 'Repository supprimé';
-          this.repos.splice(index, 1);
-        },
-        error => this.message = error
-      )
+        .subscribe(
+            (status) => {
+              this.message = 'Repository supprimé avec status ' + status;
+              this.repos.splice(index, 1);
+            },
+            error => this.message = error
+        );
   }
 
 }

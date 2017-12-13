@@ -1,5 +1,5 @@
-import {AbstractControl, Validators, NG_VALIDATORS, Validator} from "@angular/forms";
-import {Directive, Input, forwardRef} from "@angular/core";
+import {AbstractControl, Validators, NG_VALIDATORS, Validator} from '@angular/forms';
+import {Directive, Input, forwardRef} from '@angular/core';
 
 
 const PORTABLE_REGEXP = /^(06|07)\d{8}$/;
@@ -19,7 +19,7 @@ export class CustomsValidators {
     { provide: NG_VALIDATORS, useExisting: MobileNumberValidator, multi: true }
   ]
 })
-export class MobileNumberValidator implements Validator{
+export class MobileNumberValidator implements Validator {
 
   private _enabled: boolean;
 

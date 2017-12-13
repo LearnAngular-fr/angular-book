@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GithubService} from './github.service';
-import {Repo} from './Repo.model';
+import {Repo} from './repo.model';
+import 'rxjs/add/operator/mergeMap';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,7 @@ export class AppComponent implements OnInit {
     this.message = null;
     this.githubService.getRepos(username).subscribe(
       repos => {
-        this.repos = repos
+        this.repos = repos;
         console.log(repos);
       },
       error => this.message = error
@@ -37,14 +38,14 @@ export class AppComponent implements OnInit {
     this.githubService.addRepo(reponame).map(repo => repo)
       .flatMap(repo => {
         this.message = repo.name + ' a été créé';
-        return this.githubService.getRepos('learnAngular')
+        return this.githubService.getRepos('learnAngular');
       })
       .subscribe(
         repos => {
-          this.repos = repos
+          this.repos = repos;
         },
         error => this.message = error
-      )
+      );
   }
 
   delRepo(repo: Repo, index: number): void {
@@ -58,7 +59,7 @@ export class AppComponent implements OnInit {
           this.repos.splice(index, 1);
         },
         error => this.message = error
-      )
+      );
   }
 
 }

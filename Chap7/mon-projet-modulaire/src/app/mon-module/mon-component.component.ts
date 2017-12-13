@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {MonService} from "./mon-service.service";
-import {MonAutreService} from "./mon-autre-service.service";
+import {MonService} from './mon-service.service';
+import {MonAutreService} from './mon-autre-service.service';
 
 @Component({
   selector: 'app-mon-module',

@@ -1,6 +1,6 @@
-import {AbstractControl, Validator, NG_ASYNC_VALIDATORS} from "@angular/forms";
-import {Directive, Input} from "@angular/core";
-import {Observable} from "rxjs/Observable";
+import {AbstractControl, Validator, NG_ASYNC_VALIDATORS} from '@angular/forms';
+import {Directive, Input} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
 
@@ -34,8 +34,8 @@ export class MobileNumberAsyncValidator implements Validator{
   }
 
   validate(c: AbstractControl): Observable<{[key: string]: any}> {
-    if(this._enabled) {
-      return CustomAsyncValidators.asyncMobileNumber(c)
+    if (this._enabled) {
+      return CustomAsyncValidators.asyncMobileNumber(c);
     } else {
       return null;
     }

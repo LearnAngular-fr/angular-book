@@ -1,6 +1,6 @@
 import {Component, ViewChild, QueryList, ViewChildren} from '@angular/core';
-import {PersonComponent} from "./person/person.component";
-import {CarComponent} from "./car/car.component";
+import {PersonComponent} from './person/person.component';
+import {CarComponent} from './car/car.component';
 
 
 @Component({
@@ -39,9 +39,9 @@ export class AppComponent {
   characters: Array<any> = [
     {name: 'mickey', lastname: 'mouse'},
     {name: 'donald', lastname: 'duck'},
-    {name: 'pat', lastname: 'hibulaire'}]
+    {name: 'pat', lastname: 'hibulaire'}];
 
-  disable: boolean = false;
+  disable = false;
 
   theBest: any;
 

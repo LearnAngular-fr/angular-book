@@ -1,10 +1,10 @@
-import { PrjHttpGithubPage } from './app.po';
+import { AppPage } from './app.po';
 
-describe('prj-http-github App', () => {
-  let page: PrjHttpGithubPage;
+describe('prj-httpclient-github App', () => {
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new PrjHttpGithubPage();
+    page = new AppPage();
   });
 
   it('should display welcome message', () => {

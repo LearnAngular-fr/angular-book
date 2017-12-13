@@ -1,6 +1,5 @@
-/* tslint:disable:no-unused-variable */
+import { TestBed, inject } from '@angular/core/testing';
 
-import { TestBed, async, inject } from '@angular/core/testing';
 import { GithubService } from './github.service';
 
 describe('GithubService', () => {
@@ -10,7 +9,7 @@ describe('GithubService', () => {
     });
   });
 
-  it('should ...', inject([GithubService], (service: GithubService) => {
+  it('should be created', inject([GithubService], (service: GithubService) => {
     expect(service).toBeTruthy();
   }));
 });

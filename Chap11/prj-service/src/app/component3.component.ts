@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LoggerService} from "./logger.service";
+import {LoggerService} from './logger.service';
 
 @Component({
   selector: 'app-component3',
@@ -7,7 +7,7 @@ import {LoggerService} from "./logger.service";
 })
 export class Component3 implements OnInit {
 
-  constructor(private logger:LoggerService) { }
+  constructor(private logger: LoggerService) { }
 
   ngOnInit() {
     this.logger.debug('In component3');

@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {GithubService} from './github.service';
 import {HttpModule} from '@angular/http';
-import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,8 +11,7 @@ import {FormsModule} from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    HttpModule,
-    FormsModule
+    HttpModule
   ],
   providers: [GithubService],
   bootstrap: [AppComponent]

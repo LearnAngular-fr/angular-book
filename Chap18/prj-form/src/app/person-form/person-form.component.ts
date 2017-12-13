@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild, AfterViewInit} from '@angular/core';
-import {Person} from "../person";
-import {NgForm} from "@angular/forms";
+import {Person} from '../person';
+import {NgForm} from '@angular/forms';
 
 
 @Component({
@@ -10,9 +10,9 @@ import {NgForm} from "@angular/forms";
 })
 export class PersonFormComponent implements OnInit, AfterViewInit {
 
-  model:Person;
+  model: Person;
 
-  colors:string[];
+  colors: string[];
 
   @ViewChild('monForm') monForm: NgForm;
 
@@ -21,8 +21,8 @@ export class PersonFormComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     // Nous pouvions également appeler d'un service ...
-    this.colors=['','rouge','jaune','vert','bleu'];
-    this.model=new Person();
+    this.colors = ['', 'rouge', 'jaune', 'vert', 'bleu'];
+    this.model = new Person();
 
   }
 

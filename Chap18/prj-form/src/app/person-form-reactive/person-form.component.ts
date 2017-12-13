@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormGroup, FormBuilder, Validators} from "@angular/forms";
-import {CustomsValidators} from "../customs-validators";
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import {CustomsValidators} from '../customs-validators';
 
 
 @Component({
@@ -12,21 +12,23 @@ export class PersonFormComponent implements OnInit {
 
   personForm: FormGroup;
 
-  colors:string[];
+  colors: string[];
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
     this.personForm = this.fb.group({
       gender: ['', Validators.required],
-      lastName: ['',[Validators.required,Validators.minLength(3)]],
-      firstName: ['toto',[Validators.required,Validators.minLength(3)]],
-      favoriteColor: ['',Validators.required],
-      phoneNumber: ['',CustomsValidators.mobileNumber],
+      lastName: ['', [Validators.required, Validators.minLength(3)]],
+      firstName: ['toto', [Validators.required, Validators.minLength(3)]],
+      favoriteColor: ['', Validators.required],
+      phoneNumber: ['', CustomsValidators.mobileNumber],
       birthday: ''
     });
 
-    this.colors=['','rouge','jaune','vert','bleu'];
+
+
+    this.colors = ['', 'rouge', 'jaune', 'vert', 'bleu'];
 
     this.personForm.valueChanges
       .subscribe(data => this.onValueChanged(data));
