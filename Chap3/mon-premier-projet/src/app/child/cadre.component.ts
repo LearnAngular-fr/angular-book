@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-cadre',
@@ -13,7 +13,8 @@ import {Component, OnInit} from '@angular/core';
     }
     .bordure {
       border: 1px solid darkmagenta;
-} `]
+    } 
+  `]
 })
 export class CadreComponent {
 }
