@@ -1,0 +1,14 @@
+	  model:Person;
+	  colors:string[];
+	 
+	  constructor() { }
+	 
+	  ngOnInit() {
+	    // Nous pouvions également appeler d'un service ...
+	    this.colors = ['rouge','jaune','vert','bleu'];
+	     this.model = new Person();
+	  }
+	 
+	  onSubmit() {
+	    console.log(`soumission du model ${JSON.stringify(this.model)}`);
+	  }

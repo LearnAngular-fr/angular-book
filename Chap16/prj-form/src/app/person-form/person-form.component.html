@@ -1,0 +1,77 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" #monForm="ngForm">
+        <fieldset>
+            <legend>Formulaire Person</legend>
+            <div class="form-group">
+                <label class="control-label">Genre </label>
+                <label for="male" class="radio-inline">
+                    <input type="radio" id="male" [(ngModel)]="model.gender" name="gender" value="1"
+                           required>Masculin</label>
+                <label for="female" class="radio-inline">
+                    <input type="radio" id="female" [(ngModel)]="model.gender" name="gender" value="0" required>Fémimin</label>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Nom</label>
+                <input type="text" class="form-control" id="lastName" [(ngModel)]="model.lastName" name="lastName"
+                       minlength="3"
+                       required #lastName="ngModel">
+
+                <div *ngIf="lastName.errors && lastName.dirty" class="alert alert-danger">
+                    <p [hidden]="!lastName.errors.minlength"> Nom doit faire 3 caractères minimun </p>
+                    <p [hidden]="!lastName.errors.required"> Nom est obligatoire </p>
+                </div>
+           </div>
+            <div class="form-group">
+                <label for="firstName">Prénom</label>
+                <input type="text" class="form-control" id="firstName" [(ngModel)]="model.firstName" name="firstName"
+                       minlength="3" required>
+                <div *ngIf="formErrors.firstName" class="alert alert-danger">
+                    {{ formErrors.firstName }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="favoriteColor">Couleur favorite</label>
+                <select class="form-control" id="favoriteColor" [(ngModel)]="model.favoriteColor" name="favoriteColor"
+                        required>
+                    <option *ngFor="let color of colors" [value]="color">{{color}}</option>
+                </select>
+                <div *ngIf="formErrors.favoriteColor" class="alert alert-danger">
+                    {{ formErrors.favoriteColor }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Numéro de mobile</label>
+                <input type="text" class="form-control" id="phoneNumber" ngModel name="phoneNumber" required validateMobileNumber #phoneNumber="ngModel">
+
+                <div *ngIf="phoneNumber.errors && phoneNumber.dirty" class="alert alert-danger">
+                    <p [hidden]="!phoneNumber.errors.validateMobileNumber"> Ce n'est pas un numéro de portable </p>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber2">Numéro de mobile 2</label>
+                <input type="text" class="form-control" id="phoneNumber2" ngModel name="phoneNumber2" required validateAsyncMobileNumber>
+                <div *ngIf="formErrors.phoneNumber2" class="alert alert-danger">
+                    {{ formErrors.phoneNumber2 }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="birthday">birthday</label>
+                <input type="date" class="form-control" id="birthday" [(ngModel)]="model.birthday" name="birthday">
+            </div>
+            <button type="submit" class="btn btn-success" [disabled]="!monForm.form.valid">Soumettre</button>
+            <button type="reset" class="btn btn-default">Effacer</button>
+        </fieldset>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+

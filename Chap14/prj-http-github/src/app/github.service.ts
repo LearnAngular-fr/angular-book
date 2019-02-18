@@ -1,12 +1,60 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { environment } from '../environments/environment';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { Repo } from './repo.model';
 
-import { Repo } from './Repo.model';
+@Injectable({
+  providedIn: 'root'
+})
+export class GithubService {
 
+  private urlBuilder: UrlBuilder;
+
+  constructor(private http: HttpClient) {
+    this.urlBuilder = new UrlBuilder(environment.GITHUB_API_ROOT, environment.GITHUB_API_TOKEN);
+  }
+
+  getRepos(username: string): Observable<Repo[]> {
+    return this.http.get<Repo[]>(this.urlBuilder.getRepos(username))
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+
+  delRepo(username: string, repository: string): Observable<number> {
+    return this.http.delete(
+      this.urlBuilder.delRepo(username, repository),
+      {observe: 'response'}
+    ).pipe(
+      map((res: HttpResponse<Response>) => res.status),
+      catchError(this.handleError)
+    );
+  }
+
+  addRepo(reponame: string): Observable<Repo> {
+    return this.http.post<Repo>(
+      this.urlBuilder.addRepo(),
+      {name: reponame}
+    ).pipe(catchError(this.handleError));
+  }
+
+
+  private handleError(err: HttpErrorResponse) {
+    let errMsg: string;
+    if (err.error instanceof Error) {
+      errMsg = err.error.message ? err.error.message : err.error.toString();
+    } else {
+      errMsg = `${err.status} - ${err.statusText || ''} ${err.error}`;
+    }
+    console.error(errMsg);
+    return throwError(err);
+  }
+
+
+}
 
 class UrlBuilder {
 
@@ -25,6 +73,7 @@ class UrlBuilder {
     return this.appendToken(`${this.url}/user/repos`);
   }
 
+
   private appendToken(url: string): string {
     if (this.token) {
       return url + `?access_token=${this.token}`;
@@ -33,53 +82,3 @@ class UrlBuilder {
   }
 
 }
-
-@Injectable()
-export class GithubService {
-
-  private urlBuilder: UrlBuilder;
-
-  constructor(private http: Http) {
-    this.urlBuilder = new UrlBuilder(environment.GITHUB_API_ROOT, environment.GITHUB_API_TOKEN);
-  }
-
-  getRepos(username: string): Observable<Repo[]> {
-    return this.http.get(this.urlBuilder.getRepos(username))
-      .map(res => res.json())
-      .catch(this.handleError);
-  }
-
-  delRepo(username: string, repository: string): Observable<string> {
-
-    return this.http.delete(this.urlBuilder.delRepo(username, repository))
-      .map(res => res.status)
-      .catch(this.handleError);
-  }
-
-  addRepo(reponame: string): Observable<Repo> {
-
-    const headers = new Headers({'Content-Type': 'application/json'});
-    const options = new RequestOptions({headers: headers});
-
-    return this.http.post(this.urlBuilder.addRepo(), {name: reponame}, options)
-      .map(res => res.json())
-      .catch(this.handleError);
-  }
-
-
-  private handleError(error: Response | any) {
-    let errMsg: string;
-    if (error instanceof Response) {
-      const body = error.json() || '';
-      const err = body.error || JSON.stringify(body);
-      errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-    } else {
-      errMsg = error.message ? error.message : error.toString();
-    }
-    console.error(errMsg);
-    return Observable.throw(errMsg);
-  }
-
-}
-
-

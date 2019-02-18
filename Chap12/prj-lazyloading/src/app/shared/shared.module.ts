@@ -1,5 +1,4 @@
-import {Injectable, NgModule, Component, ModuleWithProviders} from '@angular/core';
-
+import { Injectable, NgModule, Component, ModuleWithProviders } from '@angular/core';
 
 @Component({
   selector: 'app-shared',
@@ -21,6 +20,7 @@ export class LogService {
   exports: [SharedComponent]
 })
 export class SharedModule {
+
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
@@ -28,4 +28,3 @@ export class SharedModule {
     };
   }
 }
-
