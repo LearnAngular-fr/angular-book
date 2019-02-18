@@ -1,11 +1,12 @@
-import {Injectable, Optional} from '@angular/core';
-
+import { Injectable, Optional } from '@angular/core';
 
 export class MonAutreServiceConfig {
   monAutreValeur: string;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MonAutreService {
 
   monAutreValeur: string ;
@@ -17,5 +18,4 @@ export class MonAutreService {
       this.monAutreValeur = 'Initiale';
     }
   }
-
 }

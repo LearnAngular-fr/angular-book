@@ -1,7 +1,7 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
-import {AppComponent} from './app.component';
-import {MonModule} from './mon-module/mon-module.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { MonModule } from './mon-module/mon-module.module';
 
 @NgModule({
   declarations: [
@@ -9,10 +9,11 @@ import {MonModule} from './mon-module/mon-module.module';
   ],
   imports: [
     BrowserModule,
-    MonModule.forRoot({maValeur: 'Ma configuration'}, {monAutreValeur: 'Mon autre configuration'})
+    MonModule.forRoot(
+      {maValeur: 'Ma configuration'},
+      {monAutreValeur: 'Mon autre configuration'})
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }

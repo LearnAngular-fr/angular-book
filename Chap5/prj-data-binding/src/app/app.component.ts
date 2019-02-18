@@ -26,7 +26,7 @@ import {Component} from '@angular/core';
 export class AppComponent {
   person = 'John Doe';
   age= 30;
-  address: any= {street: 'rue du Paradis', city: '75010 Paris'};
+  address = {street: 'rue du Paradis', city: '75010 Paris'};
   alignement = 'right';
   couleur = 'red';
   compteur: any = 'N/A';

@@ -4,5 +4,5 @@ import {Component, Input} from '@angular/core';
   template: ` {{monAdresse.street}} `
 })
 export class Comp1Component {
-  @Input() monAdresse: any;
+  @Input() monAdresse;
 }

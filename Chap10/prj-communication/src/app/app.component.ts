@@ -26,7 +26,6 @@ import {CarComponent} from './car/car.component';
       <tab [tabTitle]="'Tab 2'">Tab 2 Content</tab>
     </tabs>
   `
-
 })
 export class AppComponent {
 

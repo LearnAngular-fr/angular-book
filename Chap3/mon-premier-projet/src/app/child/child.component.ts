@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
     h1 {
       color : blue;
     }
-`] })
+  `]
+})
 export class ChildComponent {
 }

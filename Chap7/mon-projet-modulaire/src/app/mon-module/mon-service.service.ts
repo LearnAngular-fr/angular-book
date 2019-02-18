@@ -1,13 +1,15 @@
-import {Injectable, Optional} from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 
 export class MonServiceConfig {
   maValeur: string;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MonService {
 
-  maValeur: string ;
+  maValeur: string;
 
   constructor(@Optional() config: MonServiceConfig) {
     if (config) {
